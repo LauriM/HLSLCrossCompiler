@@ -68,6 +68,7 @@ static void AddOpAssignToDestWithMask(HLSLCrossCompilerContext* psContext, const
 		return;
 	}
 
+	/*
 	switch (eDestDataType)
 	{
 	case SVT_INT:
@@ -121,6 +122,11 @@ static void AddOpAssignToDestWithMask(HLSLCrossCompilerContext* psContext, const
 		// TODO: Handle bools?
 		break;
 	}
+	*/
+
+	// Hack, disable bit field assignments
+	bformata(glsl, " %s %s(", szAssignmentOp, GetConstructorForType(eDestDataType, ui32DestElementCount));
+
 	(*pNeedsParenthesis)++;
 	return;
 }
